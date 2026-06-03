@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+
+    <div class="col-md-12">
+
+        <div class="card">
+
+            <div class="card-header">
+                Ask Contract Questions
+            </div>
+
+            <div class="card-body">
+
+                <textarea
+                    id="question"
+                    class="form-control"
+                    rows="3">
+                </textarea>
+
+                <button
+                    id="askBtn"
+                    class="btn btn-success mt-3">
+
+                    Ask Question
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<hr>
+
+<div class="card">
+
+    <div class="card-header">
+        Similarity Report
+    </div>
+
+    <div class="card-body">
+
+        <table class="table">
+
+            <thead>
+
+                <tr>
+                    <th>Rank</th>
+                    <th>Location</th>
+                    <th>Similarity</th>
+                    <th>Signal</th>
+                    <th>Preview</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="similarityTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<hr>
+
+<div class="card">
+
+    <div class="card-header">
+        Generated Answer
+    </div>
+
+    <div class="card-body">
+
+        <div id="answerBox">
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
