@@ -1,12 +1,420 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiniRAG-MSA-Contract-Q-A-System</title>
-</head>
-<body>
-    <a href="{% url 'upload_document' %}"><h1>Jatt aa gye oye</h1></a>
-    
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    :root {
+        --ink: #18202f;
+        --muted: #657084;
+        --line: #dce3ed;
+        --panel: #ffffff;
+        --soft: #f4f7fb;
+        --accent: #0f766e;
+        --accent-dark: #115e59;
+        --gold: #b7791f;
+    }
+
+    body {
+        background:
+            radial-gradient(circle at top left, rgba(15, 118, 110, 0.12), transparent 34rem),
+            linear-gradient(180deg, #f7f9fc 0%, #eef3f8 100%);
+        color: var(--ink);
+    }
+
+    .home-shell {
+        padding: 2.5rem 0 3.5rem;
+    }
+
+    .hero-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+        gap: 2rem;
+        align-items: stretch;
+        min-height: 430px;
+    }
+
+    .hero-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem 0;
+    }
+
+    .eyebrow {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        padding: 0.35rem 0.65rem;
+        border: 1px solid rgba(15, 118, 110, 0.22);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--accent-dark);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0;
+    }
+
+    .eyebrow-dot {
+        width: 0.55rem;
+        height: 0.55rem;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: 0 0 0 0.22rem rgba(15, 118, 110, 0.12);
+    }
+
+    .hero-title {
+        max-width: 780px;
+        margin: 0;
+        font-size: clamp(2.45rem, 5vw, 4.6rem);
+        font-weight: 800;
+        line-height: 1.02;
+        letter-spacing: 0;
+    }
+
+    .hero-lede {
+        max-width: 660px;
+        margin: 1.25rem 0 0;
+        color: var(--muted);
+        font-size: 1.12rem;
+        line-height: 1.7;
+    }
+
+    .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        margin-top: 2rem;
+    }
+
+    .btn-home {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        min-height: 3rem;
+        padding: 0.78rem 1.1rem;
+        border-radius: 0.5rem;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .btn-primary-home {
+        border: 1px solid var(--accent);
+        background: var(--accent);
+        color: #ffffff;
+        box-shadow: 0 1rem 1.8rem rgba(15, 118, 110, 0.18);
+    }
+
+    .btn-primary-home:hover {
+        background: var(--accent-dark);
+        border-color: var(--accent-dark);
+        color: #ffffff;
+    }
+
+    .btn-secondary-home {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.86);
+        color: var(--ink);
+    }
+
+    .btn-secondary-home:hover {
+        border-color: #b8c5d6;
+        background: #ffffff;
+        color: var(--ink);
+    }
+
+    .insight-panel {
+        overflow: hidden;
+        border: 1px solid rgba(136, 151, 174, 0.28);
+        border-radius: 0.5rem;
+        background: rgba(255, 255, 255, 0.88);
+        box-shadow: 0 1.25rem 3rem rgba(35, 49, 71, 0.12);
+        backdrop-filter: blur(14px);
+    }
+
+    .panel-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1rem 1.1rem;
+        border-bottom: 1px solid var(--line);
+        background: #fbfcfe;
+    }
+
+    .panel-title {
+        margin: 0;
+        font-size: 0.92rem;
+        font-weight: 800;
+    }
+
+    .status-pill {
+        padding: 0.28rem 0.55rem;
+        border-radius: 999px;
+        background: rgba(15, 118, 110, 0.1);
+        color: var(--accent-dark);
+        font-size: 0.76rem;
+        font-weight: 800;
+    }
+
+    .answer-preview {
+        padding: 1.25rem;
+    }
+
+    .prompt-box,
+    .answer-box {
+        border: 1px solid var(--line);
+        border-radius: 0.45rem;
+        background: #ffffff;
+    }
+
+    .prompt-box {
+        padding: 1rem;
+    }
+
+    .small-label {
+        margin-bottom: 0.35rem;
+        color: var(--muted);
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    .question-text {
+        margin: 0;
+        color: var(--ink);
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .source-list {
+        display: grid;
+        gap: 0.7rem;
+        margin: 1rem 0;
+    }
+
+    .source-row {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 0.8rem;
+        align-items: center;
+        padding: 0.75rem;
+        border: 1px solid #e7edf5;
+        border-radius: 0.45rem;
+        background: var(--soft);
+    }
+
+    .rank-badge {
+        display: grid;
+        width: 2rem;
+        height: 2rem;
+        place-items: center;
+        border-radius: 0.45rem;
+        background: #ffffff;
+        color: var(--accent-dark);
+        font-size: 0.82rem;
+        font-weight: 800;
+    }
+
+    .source-copy strong {
+        display: block;
+        font-size: 0.92rem;
+    }
+
+    .source-copy span {
+        color: var(--muted);
+        font-size: 0.82rem;
+    }
+
+    .score {
+        color: var(--accent-dark);
+        font-weight: 800;
+    }
+
+    .answer-box {
+        padding: 1rem;
+        border-left: 4px solid var(--gold);
+    }
+
+    .answer-box p {
+        margin: 0;
+        color: #334155;
+        line-height: 1.55;
+    }
+
+    .workflow-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1.25rem;
+    }
+
+    .workflow-card {
+        min-height: 10.8rem;
+        padding: 1.15rem;
+        border: 1px solid rgba(136, 151, 174, 0.28);
+        border-radius: 0.5rem;
+        background: rgba(255, 255, 255, 0.82);
+    }
+
+    .workflow-card span {
+        display: grid;
+        width: 2.35rem;
+        height: 2.35rem;
+        place-items: center;
+        margin-bottom: 0.95rem;
+        border-radius: 0.45rem;
+        background: #e9f7f5;
+        color: var(--accent-dark);
+        font-weight: 800;
+    }
+
+    .workflow-card h2 {
+        margin: 0 0 0.45rem;
+        font-size: 1.05rem;
+        font-weight: 800;
+    }
+
+    .workflow-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.55;
+    }
+
+    @media (max-width: 991px) {
+        .hero-panel,
+        .workflow-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .hero-copy {
+            padding-top: 1rem;
+        }
+    }
+
+    @media (max-width: 575px) {
+        .home-shell {
+            padding-top: 1.25rem;
+        }
+
+        .hero-title {
+            font-size: 2.35rem;
+        }
+
+        .hero-actions,
+        .btn-home {
+            width: 100%;
+        }
+
+        .source-row {
+            grid-template-columns: auto 1fr;
+        }
+
+        .score {
+            grid-column: 2;
+        }
+    }
+</style>
+
+<main class="home-shell">
+    <section class="hero-panel">
+        <div class="hero-copy">
+            <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                MiniRAG Contract QA
+            </div>
+
+            <h1 class="hero-title">Ask sharper questions about dense MSA contracts.</h1>
+            <p class="hero-lede">
+                Upload a contract, retrieve the most relevant clauses, and generate grounded answers with source similarity signals for review.
+            </p>
+
+            <div class="hero-actions">
+                <a class="btn-home btn-primary-home" href="{% url 'upload_document' %}">
+                    Start with Upload
+                    <span aria-hidden="true">-></span>
+                </a>
+                <a class="btn-home btn-secondary-home" href="{% url 'query_page' %}">
+                    Open QA Workspace
+                </a>
+                <a class="btn-home btn-secondary-home" href="{% url 'evaluation_page' %}">
+                    View Evaluation
+                </a>
+            </div>
+        </div>
+
+        <aside class="insight-panel" aria-label="Contract answer preview">
+            <div class="panel-topbar">
+                <p class="panel-title">Answer Trace</p>
+                <span class="status-pill">Grounded</span>
+            </div>
+
+            <div class="answer-preview">
+                <div class="prompt-box">
+                    <div class="small-label">Question</div>
+                    <p class="question-text">What are the termination rights under the master service agreement?</p>
+                </div>
+
+                <div class="source-list">
+                    <div class="source-row">
+                        <span class="rank-badge">1</span>
+                        <div class="source-copy">
+                            <strong>Page 8</strong>
+                            <span>Termination for material breach</span>
+                        </div>
+                        <span class="score">0.91</span>
+                    </div>
+
+                    <div class="source-row">
+                        <span class="rank-badge">2</span>
+                        <div class="source-copy">
+                            <strong>Page 11</strong>
+                            <span>Notice period and cure window</span>
+                        </div>
+                        <span class="score">0.84</span>
+                    </div>
+
+                    <div class="source-row">
+                        <span class="rank-badge">3</span>
+                        <div class="source-copy">
+                            <strong>Page 14</strong>
+                            <span>Survival of obligations</span>
+                        </div>
+                        <span class="score">0.78</span>
+                    </div>
+                </div>
+
+                <div class="answer-box">
+                    <div class="small-label">Generated Answer</div>
+                    <p>
+                        The agreement allows termination after written notice if a material breach is not cured within the stated notice period.
+                    </p>
+                </div>
+            </div>
+        </aside>
+    </section>
+
+    <section class="workflow-grid" aria-label="Application workflow">
+        <article class="workflow-card">
+            <span>01</span>
+            <h2>Upload</h2>
+            <p>Load the MSA document that powers retrieval for the question answering flow.</p>
+        </article>
+
+        <article class="workflow-card">
+            <span>02</span>
+            <h2>Ask</h2>
+            <p>Submit contract questions and inspect the retrieved chunks behind each answer.</p>
+        </article>
+
+        <article class="workflow-card">
+            <span>03</span>
+            <h2>Evaluate</h2>
+            <p>Compare generated answers against ground truth to measure system reliability.</p>
+        </article>
+    </section>
+</main>
+
+{% endblock %}

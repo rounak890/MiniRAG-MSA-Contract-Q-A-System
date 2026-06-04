@@ -1,0 +1,161 @@
+2026-06-04 04:51:49.559 | INFO     | main_website.views:home:140 - Accessing home page
+2026-06-04 04:52:18.462 | INFO     | main_website.views:home:140 - Accessing home page
+2026-06-04 04:52:22.355 | INFO     | main_website.views:home:140 - Accessing home page
+2026-06-04 04:52:51.622 | INFO     | main_website.views:upload_document:145 - Uploading document
+2026-06-04 04:52:57.165 | INFO     | main_website.views:upload_document:145 - Uploading document
+2026-06-04 04:53:19.281 | INFO     | main_website.views:ask_question:162 - Asking question
+2026-06-04 04:53:41.678 | INFO     | main_website.views:generate_answer:108 - Generating answer for question: Is there a penalty for late payment, and what is the rate?
+2026-06-04 04:53:41.678 | INFO     | main_website.views:generate_answer:120 - Sending message to Gemini API: You are a contract QA assistant. Answer the question using only the provided context from the contract. Do not hallucinate or invent details. If the answer is not in the context, say 'I could not find the answer in the provided contract text.'
+
+Context:
+Chunk 1:
+and/or invoking & forfeiting the Bank Guarantee, if any, under this agreement.
+
+Chunk 2:
+and payable under the local, State and / or central laws, rules and / or regulations as 
+may be prevalent and as amended from time to time in relation to the Services rendered 
+pursuant to this AGREEMENT. 
+Notwithstanding anything contained in this AGREEMENT, the Bank shall not be liable nor 
+responsible for collection and/ or payment of any such taxes, duties, fines, penalties etc., 
+by whatever name called, that are due and payable by the Service Provider under the 
+local, State and / or central laws, rules and / or regulations as may be prevalent and as 
+amended from time to time. 
+23. Miscellaneous 
+The service provider undertakes and ensures that :
+
+Chunk 3:
+34.  LIQUIDATED DAMAGES  
+If the Service Provider fails to comply with the terms of this agreement, IPPB shall, without 
+prejudice to its other remedies under the agreement, deduct from the order value, as 
+liquidated damages, a sum equivalent to 0.5% of the services for each week or part thereof 
+of delay until actual delivery or performance up to a maximum deduction of 10% of the 
+order value. Once the maximum is reached Bank may consider cancellation of the order 
+or termination of the agreement and the Performance Security submitted may be invoked 
+& forfeited. 
+ 
+The payment or deduction of such Liquidated Damages shall not relieve the Service 
+Provider from his obligations to complete its obligations under this Agreement.   
+The parties agree that the Liquidated Damages set out hereunder are genuine pre- 
+estimate of costs and losses likely to be incurred by IPPB due to a failure to comply with the 
+terms of the agreement.
+
+Chunk 4:
+for paying a penalty of Rs.___________on demand to IPPB, which may be settled from the payment of invoices 
+for the contracted period or by forfeiture of Performance Bank Guarantee.  
+ 
+45. Notices 
+i) Any notice or other document, which may be given by either Party under this Agreement 
+to the other Party (“Notice”), shall be given in writing in person or by registered post or by 
+facsimile transmission.
+
+Chunk 5:
+such as an event described as an act of God (like a natural calamity) or events such as a 
+war, strike, riots, crimes (but not including negligence or wrong-doing, 
+predictable/seasonal rain and any other events specifically excluded in the clause). In 
+case of a FM, the contract frees both parties (bank & the vendor) from contractual liability 
+or obligation when prevented by such events from fulfilling their obligations under the 
+contract. However, this does not excuse a party’s non-performance entirely, but only 
+suspends it for the duration of the FM. The parties have to give notice of FM as soon as it 
+occurs and it cannot be claimed ex-post facto. If the performance in whole or in part or 
+any obligation under this contract is prevented or delayed by any reason of FM for a period 
+exceeding ________ (_______________________) days, IPPB may at its option terminate the 
+contract.  
+Notwithstanding the punitive provisions contained in the contract for delay or breach of
+
+Question: Is there a penalty for late payment, and what is the rate?
+
+Answer:
+2026-06-04 04:53:44.159 | INFO     | main_website.views:generate_answer:135 - gemini response : sdk_http_response=HttpResponse(
+  headers=<dict len=12>
+) candidates=[Candidate(
+  content=Content(
+    parts=[
+      Part(
+        text="I could not find the answer in the provided contract text. The provided text details liquidated damages for the Service Provider's failure to comply with the terms of the agreement (specifically regarding delays in delivery or performance), but it does not mention a penalty for late payment.",
+        thought_signature=b'\x124\n2\x01\x0c9\xd6\xc7\xe4\x99p>\xecL_\x10}]s\x00\xd8L\xb0\xd7_\xfbD\x010\xc5\xa5\xa8\x11X&u\xd9o\x16\xa9\xb1\xb6\x95I\xc4]\xd6?\xd1\x9b\xcc\x0c\x0b'
+      ),
+    ],
+    role='model'
+  ),
+  finish_reason=<FinishReason.STOP: 'STOP'>,
+  index=0
+)] create_time=None model_version='gemini-3.1-flash-lite' prompt_feedback=None response_id='1wQhaqncFbTBqfkPhb-aiAk' usage_metadata=GenerateContentResponseUsageMetadata(
+  candidates_token_count=53,
+  prompt_token_count=792,
+  prompt_tokens_details=[
+    ModalityTokenCount(
+      modality=<MediaModality.TEXT: 'TEXT'>,
+      token_count=792
+    ),
+  ],
+  total_token_count=845
+) model_status=None automatic_function_calling_history=[] parsed=None
+2026-06-04 04:55:35.989 | INFO     | main_website.views:upload_document:164 - Uploading document
+2026-06-04 04:55:41.888 | INFO     | main_website.views:upload_document:164 - Uploading document
+2026-06-04 04:55:55.579 | INFO     | main_website.views:ask_question:181 - Asking question
+2026-06-04 04:56:08.521 | INFO     | main_website.views:generate_answer:126 - Generating answer for question: Is there a penalty for late payment, and what is the rate?
+2026-06-04 04:56:08.521 | INFO     | main_website.views:generate_answer:138 - Sending message to Gemini API: You are a contract QA assistant. Answer the question using only the provided context from the contract. Do not hallucinate or invent details. If the answer is not in the context, say 'I could not find the answer in the provided contract text.'
+
+Context:
+Chunk 1:
+and/or invoking & forfeiting the Bank Guarantee, if any, under this agreement.
+
+Chunk 2:
+and payable under the local, State and / or central laws, rules and / or regulations as 
+may be prevalent and as amended from time to time in relation to the Services rendered 
+pursuant to this AGREEMENT. 
+Notwithstanding anything contained in this AGREEMENT, the Bank shall not be liable nor 
+responsible for collection and/ or payment of any such taxes, duties, fines, penalties etc., 
+by whatever name called, that are due and payable by the Service Provider under the 
+local, State and / or central laws, rules and / or regulations as may be prevalent and as 
+amended from time to time. 
+23. Miscellaneous 
+The service provider undertakes and ensures that :
+
+Chunk 3:
+34.  LIQUIDATED DAMAGES  
+If the Service Provider fails to comply with the terms of this agreement, IPPB shall, without 
+prejudice to its other remedies under the agreement, deduct from the order value, as 
+liquidated damages, a sum equivalent to 0.5% of the services for each week or part thereof 
+of delay until actual delivery or performance up to a maximum deduction of 10% of the 
+order value. Once the maximum is reached Bank may consider cancellation of the order 
+or termination of the agreement and the Performance Security submitted may be invoked 
+& forfeited. 
+ 
+The payment or deduction of such Liquidated Damages shall not relieve the Service 
+Provider from his obligations to complete its obligations under this Agreement.   
+The parties agree that the Liquidated Damages set out hereunder are genuine pre- 
+estimate of costs and losses likely to be incurred by IPPB due to a failure to comply with the 
+terms of the agreement.
+
+Chunk 4:
+for paying a penalty of Rs.___________on demand to IPPB, which may be settled from the payment of invoices 
+for the contracted period or by forfeiture of Performance Bank Guarantee.  
+ 
+45. Notices 
+i) Any notice or other document, which may be given by either Party under this Agreement 
+to the other Party (“Notice”), shall be given in writing in person or by registered post or by 
+facsimile transmission.
+
+Chunk 5:
+such as an event described as an act of God (like a natural calamity) or events such as a 
+war, strike, riots, crimes (but not including negligence or wrong-doing, 
+predictable/seasonal rain and any other events specifically excluded in the clause). In 
+case of a FM, the contract frees both parties (bank & the vendor) from contractual liability 
+or obligation when prevented by such events from fulfilling their obligations under the 
+contract. However, this does not excuse a party’s non-performance entirely, but only 
+suspends it for the duration of the FM. The parties have to give notice of FM as soon as it 
+occurs and it cannot be claimed ex-post facto. If the performance in whole or in part or 
+any obligation under this contract is prevented or delayed by any reason of FM for a period 
+exceeding ________ (_______________________) days, IPPB may at its option terminate the 
+contract.  
+Notwithstanding the punitive provisions contained in the contract for delay or breach of
+
+Question: Is there a penalty for late payment, and what is the rate?
+
+Answer:
+2026-06-04 04:56:09.422 | INFO     | main_website.views:generate_answer:154 - gemini answer : I could not find the answer in the provided contract text.
+2026-06-04 04:56:30.255 | INFO     | main_website.views:upload_document:164 - Uploading document
+2026-06-04 04:56:36.094 | INFO     | main_website.views:run_evaluation:245 - Running evaluation
+2026-06-04 04:59:57.518 | INFO     | main_website.views:run_evaluation:248 - Running evaluation
+2026-06-04 05:00:32.185 | INFO     | main_website.views:run_evaluation:248 - Running evaluation

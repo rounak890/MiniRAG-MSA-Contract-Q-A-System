@@ -3,53 +3,28 @@
 {% block content %}
 
 <div class="row">
-
     <div class="col-md-12">
-
         <div class="card">
-
-            <div class="card-header">
-                Ask Contract Questions
-            </div>
-
+            <div class="card-header">Ask Contract Questions</div>
             <div class="card-body">
-
                 <textarea
                     id="question"
                     class="form-control"
-                    rows="3">
-                </textarea>
-
-                <button
-                    id="askBtn"
-                    class="btn btn-success mt-3">
-
-                    Ask Question
-
-                </button>
-
+                    rows="3"
+                    placeholder="Enter your question about the uploaded MSA here..."></textarea>
+                <button id="askBtn" class="btn btn-success mt-3">Ask Question</button>
             </div>
-
         </div>
-
     </div>
-
 </div>
 
 <hr>
 
 <div class="card">
-
-    <div class="card-header">
-        Similarity Report
-    </div>
-
+    <div class="card-header">Similarity Report</div>
     <div class="card-body">
-
-        <table class="table">
-
+        <table class="table table-striped">
             <thead>
-
                 <tr>
                     <th>Rank</th>
                     <th>Location</th>
@@ -57,35 +32,91 @@
                     <th>Signal</th>
                     <th>Preview</th>
                 </tr>
-
             </thead>
-
-            <tbody id="similarityTable">
-
-            </tbody>
-
+            <tbody id="similarityTable"></tbody>
         </table>
-
     </div>
-
 </div>
 
 <hr>
 
 <div class="card">
-
-    <div class="card-header">
-        Generated Answer
-    </div>
-
+    <div class="card-header">Generated Answer</div>
     <div class="card-body">
-
-        <div id="answerBox">
-
-        </div>
-
+        <div id="answerBox" class="fs-5"></div>
     </div>
-
 </div>
+
+<script>
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return '';
+}
+
+function buildRow(item) {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+        <td>${item.rank}</td>
+        <td>${item.location}</td>
+        <td>${item.score.toFixed(2)}</td>
+        <td>${item.signal}</td>
+        <td>${item.preview}</td>
+    `;
+
+    if (item.signal === 'Strong') {
+        tr.classList.add('table-success');
+    } else if (item.signal === 'Good') {
+        tr.classList.add('table-info');
+    } else if (item.signal === 'Weak') {
+        tr.classList.add('table-warning');
+    } else {
+        tr.classList.add('table-secondary');
+    }
+
+    return tr;
+}
+
+async function askQuestion() {
+    const question = document.getElementById('question').value.trim();
+    const answerBox = document.getElementById('answerBox');
+    const similarityTable = document.getElementById('similarityTable');
+
+    if (!question) {
+        answerBox.textContent = 'Please enter a question first.';
+        return;
+    }
+
+    answerBox.textContent = 'Loading answer...';
+    similarityTable.innerHTML = '';
+
+    const response = await fetch('{% url 'ask_question' %}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRFToken': getCookie('csrftoken'),
+        },
+        body: new URLSearchParams({ question }),
+    });
+
+    const data = await response.json();
+    if (data.error) {
+        answerBox.textContent = data.error;
+        return;
+    }
+
+    answerBox.textContent = data.answer;
+    data.similarity_report.forEach(item => {
+        similarityTable.appendChild(buildRow(item));
+    });
+}
+
+document.getElementById('askBtn').addEventListener('click', askQuestion);
+
+</script>
+
+<a href="{% url 'evaluation_page' %}" class="btn btn-primary mt-3">Run Evaluation</a>
+
 
 {% endblock %}

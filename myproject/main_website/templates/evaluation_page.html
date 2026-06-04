@@ -3,37 +3,18 @@
 {% block content %}
 
 <div class="card">
-
-    <div class="card-header">
-        Ground Truth Evaluation
-    </div>
-
+    <div class="card-header">Ground Truth Evaluation</div>
     <div class="card-body">
-
-        <button
-            id="evaluateBtn"
-            class="btn btn-primary">
-
-            Run Evaluation
-
-        </button>
-
+        <button id="evaluateBtn" class="btn btn-primary">Run Evaluation</button>
     </div>
-
 </div>
 
 <hr>
 
 <div class="card">
-
-    <div class="card-header">
-        Evaluation Summary
-    </div>
-
+    <div class="card-header">Evaluation Summary</div>
     <div class="card-body">
-
-        <table class="table">
-
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Category</th>
@@ -41,17 +22,55 @@
                     <th>Reason</th>
                 </tr>
             </thead>
-
-            <tbody id="evaluationTable">
-
-            </tbody>
-
+            <tbody id="evaluationTable"></tbody>
         </table>
-
         <h4 id="accuracy"></h4>
-
     </div>
-
 </div>
+
+<script>
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return '';
+}
+
+function renderEvaluation(results, accuracy) {
+    const table = document.getElementById('evaluationTable');
+    table.innerHTML = '';
+    results.forEach(row => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${row.category}</td>
+            <td>${row.judgement}</td>
+            <td>${row.reason}</td>
+        `;
+        table.appendChild(tr);
+    });
+    document.getElementById('accuracy').textContent = `Accuracy: ${accuracy}%`;
+}
+
+async function runEvaluation() {
+    const response = await fetch('{% url 'run_evaluation' %}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRFToken': getCookie('csrftoken'),
+        },
+        body: new URLSearchParams({}),
+    });
+
+    const data = await response.json();
+    if (data.error) {
+        alert(data.error);
+        return;
+    }
+
+    renderEvaluation(data.results, data.accuracy);
+}
+
+document.getElementById('evaluateBtn').addEventListener('click', runEvaluation);
+</script>
 
 {% endblock %}
