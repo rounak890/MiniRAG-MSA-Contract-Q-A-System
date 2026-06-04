@@ -3,60 +3,70 @@
     "id": 1,
     "category": "Payment Terms",
     "example_question": "When is an invoice due after it is issued?",
-    "expected_answer": ""
+    "answer" : "I could not find the answer in the provided contract text.",
+     "expected_answer": "The MSA does not specify a fixed invoice due date in the main agreement. It states that payment terms, service credits/debits, invoicing, settlement, and taxation shall be as per Schedule-B."
   },
   {
     "id": 2,
     "category": "Late Payment Penalty",
     "example_question": "Is there a penalty for late payment, and what is the rate?",
-    "expected_answer": ""
+    "answer" :  "I could not find the answer in the provided contract text.",
+    "expected_answer": "The MSA does not specify a late payment penalty or rate in the provided text. Penalties are stated to be as per Schedule-B."
   },
   {
     "id": 3,
     "category": "Delivery Deadline Penalty",
     "example_question": "What is the penalty for the provider missing a delivery milestone?",
-    "expected_answer": ""
+    "answer": "The penalty for missing a delivery milestone (delay) is a deduction from the order value of 0.5% of the services for each week or part thereof of delay, up to a maximum deduction of 10% of the order value. Once the maximum is reached, IPPB may consider cancellation of the order or termination of the agreement, and the Performance Security submitted may be invoked and forfeited.",
+    "expected_answer": "If the Service Provider fails to comply with the agreement, IPPB may deduct liquidated damages of 0.5% of the services for each week or part of a week of delay until actual delivery or performance, capped at 10% of the order value. Once the cap is reached, IPPB may consider cancellation or termination and invoke/forfeit the performance security."
   },
   {
     "id": 4,
     "category": "Termination Conditions",
     "example_question": "Under what conditions can either party terminate this agreement?",
-    "expected_answer": ""
+    "answer" :  "I could not find the answer in the provided contract text.",
+    "expected_answer": "IPPB may terminate for non-delivery of services, failure to meet committed service levels, breach causing financial loss/damages/regulatory or statutory penalties, convenience with prior written notice, service provider bankruptcy, prolonged force majeure, unsatisfactory performance after a cure period, or corruption-related breach. Either party may terminate for material breach if the breach is not cured within the stated notice period."
   },
   {
     "id": 5,
     "category": "Termination Notice Period",
     "example_question": "How many days written notice is required to terminate for convenience?",
-    "expected_answer": ""
+    "answer" : "I could not find the answer in the provided contract text.",
+    "expected_answer": "The exact convenience termination notice period is not filled in. The MSA states that IPPB may terminate for convenience by giving prior written notice of blank days to the Service Provider."
   },
   {
     "id": 6,
     "category": "Limitation of Liability",
     "example_question": "What is the maximum liability cap defined in this contract?",
-    "expected_answer": ""
+    "answer" : "The maximum liability cap is 10% of the order value.",
+     "expected_answer": "Except for criminal negligence or willful misconduct, the Service Provider's aggregate liability to IPPB is limited to the total Contract Price. This cap does not apply to indemnity obligations, breach of intellectual property rights, or breach of confidentiality obligations."
   },
   {
     "id": 7,
     "category": "Intellectual Property",
     "example_question": "Who retains ownership of IP created under this agreement?",
-    "expected_answer": ""
+    "answer" : "The IPPB retains ownership of IP created under this agreement.",
+    "expected_answer": "All deliverables and intellectual property rights relating to the services provided under the agreement are proprietary to IPPB. IPPB's name, logo, design, and other intellectual property also remain solely IPPB's property."
   },
   {
     "id": 8,
     "category": "Confidentiality Duration",
     "example_question": "How long do confidentiality obligations remain in force after termination?",
-    "expected_answer": ""
+    "answer" : "I could not find the answer in the provided contract text.",
+     "expected_answer": "The confidentiality clause survives expiration or earlier termination of the agreement. Confidential information must be destroyed, erased, or returned promptly upon written request of the discloser or upon termination/expiry."
   },
   {
     "id": 9,
     "category": "Governing Law",
     "example_question": "Which state or jurisdiction governs this agreement?",
-    "expected_answer": ""
+    "answer" : "I could not find the answer in the provided contract text.",
+    "expected_answer": "The agreement is governed by the laws of India and is subject to the exclusive jurisdiction of courts at Delhi, excluding all other courts."
   },
   {
     "id": 10,
     "category": "Dispute Resolution",
     "example_question": "What is the defined process for resolving disputes between the parties?",
-    "expected_answer": ""
+    "answer" : "The defined process for resolving disputes between the parties is to refer the dispute for arbitration, as outlined in Chunk 1. The process involves appointing one arbitrator from each party and a third arbitrator through mutual consent, with arbitration proceedings conducted under the Indian Arbitration and Conciliation Act, 1996.",
+    "expected_answer": "The parties must first try to resolve disputes amicably through direct informal negotiation between designated representatives, then escalate to senior authorized personnel. If unresolved within 21 days after negotiations begin, the Bank may refer the dispute to arbitration with one arbitrator appointed by each party and a third presiding arbitrator appointed by mutual consent of the first two. Arbitrators must be appointed within 30 days of notice, the seat is New Delhi or another mutually agreed place in India, proceedings follow the Indian Arbitration and Conciliation Act, 1996, and the award is enforceable in Indian courts only."
   }
 ]

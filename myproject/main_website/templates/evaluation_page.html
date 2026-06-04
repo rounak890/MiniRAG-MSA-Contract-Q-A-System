@@ -5,7 +5,10 @@
 <div class="card">
     <div class="card-header">Ground Truth Evaluation</div>
     <div class="card-body">
-        <button id="evaluateBtn" class="btn btn-primary">Run Evaluation</button>
+        <button id="evaluateBtn" type="button" class="btn btn-primary">
+            <span id="evaluateBtnText">Run Evaluation</span>
+            <span id="evaluateSpinner" class="spinner-border spinner-border-sm ms-2 d-none" role="status" aria-hidden="true"></span>
+        </button>
     </div>
 </div>
 
@@ -51,26 +54,44 @@ function renderEvaluation(results, accuracy) {
     document.getElementById('accuracy').textContent = `Accuracy: ${accuracy}%`;
 }
 
-async function runEvaluation() {
-    const response = await fetch('{% url 'run_evaluation' %}', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'X-CSRFToken': getCookie('csrftoken'),
-        },
-        body: new URLSearchParams({}),
-    });
+const evaluateBtn = document.getElementById('evaluateBtn');
+const evaluateBtnText = document.getElementById('evaluateBtnText');
+const evaluateSpinner = document.getElementById('evaluateSpinner');
 
-    const data = await response.json();
-    if (data.error) {
-        alert(data.error);
-        return;
-    }
-
-    renderEvaluation(data.results, data.accuracy);
+function setLoading(isLoading) {
+    evaluateBtn.disabled = isLoading;
+    evaluateSpinner.classList.toggle('d-none', !isLoading);
+    evaluateBtnText.textContent = isLoading ? 'Running...' : 'Run Evaluation';
 }
 
-document.getElementById('evaluateBtn').addEventListener('click', runEvaluation);
+async function runEvaluation() {
+    setLoading(true);
+    try {
+        const response = await fetch('{% url 'run_evaluation' %}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': getCookie('csrftoken'),
+            },
+            body: new URLSearchParams({}),
+        });
+
+        const data = await response.json();
+        if (data.error) {
+            alert(data.error);
+            return;
+        }
+
+        renderEvaluation(data.results, data.accuracy);
+    } catch (error) {
+        alert('Failed to run evaluation. Please try again.');
+        console.error(error);
+    } finally {
+        setLoading(false);
+    }
+}
+
+evaluateBtn.addEventListener('click', runEvaluation);
 </script>
 
 {% endblock %}

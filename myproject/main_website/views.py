@@ -27,14 +27,15 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 EMBEDDINGS = None
 VECTOR_STORE = None
 
-from google import genai
+# from google import genai
 
-client = genai.Client()
-chat = client.chats.create(model="gemini-3.1-flash-lite")
+# client = genai.Client()
+# chat = client.chats.create(model="gemini-3.1-flash-lite")
 
-# have to have another llm to judge the first model's responses
-judge_chat = client.chats.create(model="gemini-3.5-flash")
+# # have to have another llm to judge the first model's responses
+# judge_chat = client.chats.create(model="gemini-3.5-flash")
 
+import ollama
 
 from loguru import logger
 
@@ -136,8 +137,14 @@ def generate_answer(question: str, retrieved_docs: list[dict]) -> str:
     )
 
     logger.info(f"Sending message to Gemini API: {prompt}")
+    response = ollama.chat(model='qwen3:0.6b', messages=[
+        {
+            'role': 'user',
+            'content': prompt,
+        },
+        ])
 
-    response = chat.send_message(prompt)
+    # response = chat.send_message(prompt)
 
     # response = openai.ChatCompletion.create(
     #     model="gpt-3.5-turbo",
@@ -150,7 +157,8 @@ def generate_answer(question: str, retrieved_docs: list[dict]) -> str:
     # )
 
     # return response.choices[0].message["content"].strip()
-    answer = extract_response_text(response)
+    # answer = extract_response_text(response)
+    answer = response['message']['content'].strip()
     logger.info(f"gemini answer : {answer}")
     return answer
 
@@ -219,7 +227,14 @@ def judge_answer(system_answer: str, expected_answer: str) -> tuple[str, str]:
         f"System Answer: {system_answer}"
     )
 
-    response = judge_chat.send_message(prompt)
+    response = ollama.chat(model='qwen3:0.6b', messages=[
+        {
+            'role': 'user',
+            'content': prompt,
+        },
+        ])
+    
+    # response = judge_chat.send_message(prompt)
 
     # response = openai.ChatCompletion.create(
     #     model="gpt-3.5-turbo",
@@ -231,14 +246,27 @@ def judge_answer(system_answer: str, expected_answer: str) -> tuple[str, str]:
     #     max_tokens=150,
     # )
 
-    logger.info(f"Judge response: {response}")
 
-    content = response.text.strip()
-    if ":" in content:
-        judgement, reason = content.split(":", 1)
-        return judgement.strip(), reason.strip()
+    content = response['message']['content'].strip() 
+    logger.info(f"Judge response: {content}")
 
-    return "No Match", content
+    # if ":" in content:
+    #     judgement, reason = content.split(":", 1)
+    #     return judgement.strip(), reason.strip()
+
+    # return "No Match", content
+
+    ls = content.strip().split(" ")
+
+    if ls[0] not in ["Match", "Partial", "No"]:
+        return "No Match", content
+    
+    if ls[0] == 'Match':
+        return "Match", content
+    
+    judgement = " ".join(ls[:2]).strip()
+    reason = " ".join(ls[2:]).strip()
+    return judgement, content
 
 
 def run_evaluation(request):
@@ -258,6 +286,7 @@ def run_evaluation(request):
         category = item.get("category", "")
         question = item.get("example_question") or item.get("question")
         expected_answer = item.get("expected_answer", "").strip()
+        system_answer = item.get("answer", "").strip()
 
         if not expected_answer:
             results.append({
@@ -267,8 +296,16 @@ def run_evaluation(request):
             })
             continue
 
-        similarity_report = build_similarity_report(question, k=5)
-        system_answer = generate_answer(question, similarity_report)
+        if not system_answer:
+            results.append({
+                "category": category,
+                "judgement": "Missing",
+                "reason": "System answer is empty for this question."
+            })
+            continue
+
+        # similarity_report = build_similarity_report(question, k=5)
+        # system_answer = generate_answer(question, similarity_report)
         judgement, reason = judge_answer(system_answer, expected_answer)
 
         results.append({
