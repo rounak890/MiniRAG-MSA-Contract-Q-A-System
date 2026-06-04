@@ -24,7 +24,7 @@
     "id": 4,
     "category": "Termination Conditions",
     "example_question": "Under what conditions can either party terminate this agreement?",
-    "answer" :  "I could not find the answer in the provided contract text.",
+    "answer" :  "Under what conditions can either party terminate this agreement, the conditions are: - Non-delivery of services by the service provider - Service levels committed not met by the service provider - Breach of obligations of the service provider or any act of the service provider amounting to financial loss, damages, penalties levied on the bank by regulators or statutory authorities - The service provider shall not terminate this Agreement for convenience. The service provider cannot terminate this Agreement for convenience.",
     "expected_answer": "IPPB may terminate for non-delivery of services, failure to meet committed service levels, breach causing financial loss/damages/regulatory or statutory penalties, convenience with prior written notice, service provider bankruptcy, prolonged force majeure, unsatisfactory performance after a cure period, or corruption-related breach. Either party may terminate for material breach if the breach is not cured within the stated notice period."
   },
   {
@@ -59,7 +59,7 @@
     "id": 9,
     "category": "Governing Law",
     "example_question": "Which state or jurisdiction governs this agreement?",
-    "answer" : "I could not find the answer in the provided contract text.",
+    "answer" : "The answer is India.",
     "expected_answer": "The agreement is governed by the laws of India and is subject to the exclusive jurisdiction of courts at Delhi, excluding all other courts."
   },
   {
