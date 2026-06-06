@@ -2711,3 +2711,230 @@ The service provider cannot terminate this Agreement for convenience.
 2026-06-04 08:42:23.705 | INFO     | main_website.views:judge_answer:389 - Judge response: <Partial Match>: The system answer mentions India, which is the correct country, but fails to include the specific legal facts required (governing laws and exclusive jurisdiction at Delhi).
 2026-06-04 08:42:23.705 | INFO     | main_website.views:judge_answer:355 - Judging system answer. System answer: The defined process for resolving disputes between the parties is to refer the dispute for arbitration, as outlined in Chunk 1. The process involves appointing one arbitrator from each party and a third arbitrator through mutual consent, with arbitration proceedings conducted under the Indian Arbitration and Conciliation Act, 1996., Expected answer: The parties must first try to resolve disputes amicably through direct informal negotiation between designated representatives, then escalate to senior authorized personnel. If unresolved within 21 days after negotiations begin, the Bank may refer the dispute to arbitration with one arbitrator appointed by each party and a third presiding arbitrator appointed by mutual consent of the first two. Arbitrators must be appointed within 30 days of notice, the seat is New Delhi or another mutually agreed place in India, proceedings follow the Indian Arbitration and Conciliation Act, 1996, and the award is enforceable in Indian courts only.
 2026-06-04 08:42:26.270 | INFO     | main_website.views:judge_answer:389 - Judge response: <Partial Match>: The system answer mentions the Indian Arbitration and Conciliation Act (1996) as part of the process, which matches the ground truth's reference to this legal fact. However, it misses the key qualifier of "escalate to senior authorized personnel" and the step of appointing arbitrators through mutual consent, which are essential components of the process outlined in the ground truth.
+2026-06-06 12:32:30.612 | INFO     | main_website.views:home:296 - Accessing home page
+2026-06-06 12:32:45.925 | INFO     | main_website.views:home:296 - Accessing home page
+2026-06-06 12:33:23.843 | INFO     | main_website.views:upload_document:301 - Uploading document
+2026-06-06 12:53:04.855 | INFO     | main_website.views:home:296 - Accessing home page
+2026-06-06 13:26:42.646 | INFO     | main_website.views:upload_document:301 - Uploading document
+2026-06-06 13:26:49.681 | INFO     | main_website.views:upload_document:301 - Uploading document
+2026-06-06 13:27:25.349 | INFO     | main_website.views:ask_question:326 - Asking question
+2026-06-06 13:27:26.014 | INFO     | main_website.views:generate_answer:253 - Generating answer for question: What is the penalty for deadline missed?
+2026-06-06 13:27:26.014 | INFO     | main_website.views:generate_answer:268 - Sending message to qwen3:0.6b: You are a contract QA assistant. Answer using only the provided contract context.
+Rules:
+1. Do not invent values, dates, rates, notice periods, or clauses.
+2. If the context says a value is blank, unspecified, or governed by a Schedule, say that explicitly.
+3. If the context contains a relevant clause but not the exact requested value, explain what the clause says.
+4. Say 'I could not find the answer in the provided contract text.' only when none of the provided chunks address the topic.
+5. Keep the answer concise but include the important qualifiers and exceptions.
+
+Context:
+Chunk 1:
+such as an event described as an act of God (like a natural calamity) or events such as a 
+war, strike, riots, crimes (but not including negligence or wrong-doing, 
+predictable/seasonal rain and any other events specifically excluded in the clause). In 
+case of a FM, the contract frees both parties (bank & the vendor) from contractual liability 
+or obligation when prevented by such events from fulfilling their obligations under the 
+contract. However, this does not excuse a party’s non-performance entirely, but only 
+suspends it for the duration of the FM. The parties have to give notice of FM as soon as it 
+occurs and it cannot be claimed ex-post facto. If the performance in whole or in part or 
+any obligation under this contract is prevented or delayed by any reason of FM for a period 
+exceeding ________ (_______________________) days, IPPB may at its option terminate the 
+contract.  
+Notwithstanding the punitive provisions contained in the contract for delay or breach of 
+contract, the vendor would not be liable for imposition of any such sanction so long as the 
+delay and/or failure of the vendor in fulfilling its obligations under the contract is the result
+
+Chunk 2:
+prejudice to its other remedies under the agreement, deduct from the order value, as 
+liquidated damages, a sum equivalent to 0.5% of the services for each week or part thereof 
+of delay until actual delivery or performance up to a maximum deduction of 10% of the 
+order value. Once the maximum is reached Bank may consider cancellation of the order 
+or termination of the agreement and the Performance Security submitted may be invoked 
+& forfeited. 
+ 
+The payment or deduction of such Liquidated Damages shall not relieve the Service 
+Provider from his obligations to complete its obligations under this Agreement.   
+The parties agree that the Liquidated Damages set out hereunder are genuine pre- 
+estimate of costs and losses likely to be incurred by IPPB due to a failure to comply with the 
+terms of the agreement.
+
+Chunk 3:
+party in its possession or control where Confidential Information relates to IPPB’s data or data of 
+the customers, including but not limited to the customers other than IPPB customers or the IPPB 
+employee’s personal data or such other information as IPPB is required by banking secrecy or 
+such other laws to protect for an indefinite period, such confidential information shall be protected 
+by the receiving party until such time when the receiving party no longer has access to the 
+Confidential Information and has returned or destroyed all Confidential Information in its 
+possession.  
+ 
+24. Penalties 
+ 
+The penalties shall be as per Schedule-B to this agreement.
+
+Chunk 4:
+served pursuant to this Clause shall give reasonable details of the Material Breach, and the 
+termination will become effective. 
+ 
+32. EFFECTS OF TERMINATION 
+In the event that the IPPB terminates this Agreement pursuant to failure on the part of the 
+Service Provider to comply with the conditions as contained in this agreement and 
+depending on the event of default, Performance Guarantee furnished by Service Provider 
+shall be invoked/forfeited. 
+33. Termination due to bankruptcy of Service Provider, if Service Provider files for declaration 
+of  bankruptcy before the appropriate forum. 
+The IPPB may serve written notice on the Service Provider at any time to terminate this 
+Agreement with immediate effect in the event that the Service Provider reporting an 
+apprehension of bankruptcy to the IPPB or its nominated agencies. 
+34.  LIQUIDATED DAMAGES  
+If the Service Provider fails to comply with the terms of this agreement, IPPB shall, without 
+prejudice to its other remedies under the agreement, deduct from the order value, as 
+liquidated damages, a sum equivalent to 0.5% of the services for each week or part thereof
+
+Chunk 5:
+Provider of the provisions of this clause, the Service Provider shall forthwith reimburse the 
+same to the Bank without any demur or protest whatsoever.  
+The Service Provider hereby indemnifies IPPB against any harm or cost or claim incurred or 
+suffered by the Bank due to breach of the Service Provider in terms of the obligations herein. 
+The Service Provider will furnish proof of compliance of all labour laws requirements including 
+obtaining licenses, filing of monthly/ quarterly and annual returns and any other statutory 
+requirement within 15 days from the due date and furnish calculations and proof of 
+payments made to all Government/Statutory Authorities under PF, ESIC, Labour Welfare 
+Fund Act, Payment of Bonus Act, Minimum Wages Act, Payment of Wages Act, etc., within 
+15 days of the statutory time limit allowed under the respective Acts. 
+Notwithstanding anything contained in this AGREEMENT or in any other documents  
+i) Under no circumstances shall IPPB be liable to the Service Provider for direct, indirect, 
+incidental, consequential, special or exemplary damages arising from termination of
+
+Question: What is the penalty for deadline missed?
+
+Answer:
+2026-06-06 13:27:31.016 | INFO     | main_website.views:generate_answer:291 - model answer : I could not find the answer in the provided contract text.
+2026-06-06 13:27:44.455 | INFO     | main_website.views:run_evaluation:417 - Running evaluation
+2026-06-06 13:27:44.456 | INFO     | main_website.views:judge_answer:355 - Judging system answer. System answer: I could not find the answer in the provided contract text., Expected answer: The MSA does not specify a fixed invoice due date in the main agreement. It states that payment terms, service credits/debits, invoicing, settlement, and taxation shall be as per Schedule-B.
+2026-06-06 13:27:50.423 | INFO     | main_website.views:judge_answer:389 - Judge response: <Partial Match>: The system answer contains the key legal fact (the reason that the MSA couldn't find the answer) but misses the actual answer mentioned in the ground truth.
+2026-06-06 13:27:50.423 | INFO     | main_website.views:judge_answer:355 - Judging system answer. System answer: I could not find the answer in the provided contract text., Expected answer: The MSA does not specify a late payment penalty or rate in the provided text. Penalties are stated to be as per Schedule-B.
+2026-06-06 13:27:59.210 | INFO     | main_website.views:judge_answer:389 - Judge response: <Partial Match>: The system answer contains at least one key fact (the absence of penalties) but misses an important qualifier (Schedule-B). The ground truth states that penalties are as per Schedule-B, which the system's answer doesn't mention, but the system's claim about not finding the text aligns with the absence of the information.
+2026-06-06 13:27:59.211 | INFO     | main_website.views:judge_answer:355 - Judging system answer. System answer: The penalty for missing a delivery milestone (delay) is a deduction from the order value of 0.5% of the services for each week or part thereof of delay, up to a maximum deduction of 10% of the order value. Once the maximum is reached, IPPB may consider cancellation of the order or termination of the agreement, and the Performance Security submitted may be invoked and forfeited., Expected answer: If the Service Provider fails to comply with the agreement, IPPB may deduct liquidated damages of 0.5% of the services for each week or part of a week of delay until actual delivery or performance, capped at 10% of the order value. Once the cap is reached, IPPB may consider cancellation or termination and invoke/forfeit the performance security.
+2026-06-06 13:28:03.149 | INFO     | main_website.views:judge_answer:389 - Judge response: <Match>: The system answer contains the same key legal facts as the ground truth answer, including the deductions and cap amount, and correctly mentions the conditions for invoking performance security.
+2026-06-06 13:28:03.149 | INFO     | main_website.views:judge_answer:355 - Judging system answer. System answer: Under what conditions can either party terminate this agreement, the conditions are: - Non-delivery of services by the service provider - Service levels committed not met by the service provider - Breach of obligations of the service provider or any act of the service provider amounting to financial loss, damages, penalties levied on the bank by regulators or statutory authorities - The service provider shall not terminate this Agreement for convenience. The service provider cannot terminate this Agreement for convenience., Expected answer: IPPB may terminate for non-delivery of services, failure to meet committed service levels, breach causing financial loss/damages/regulatory or statutory penalties, convenience with prior written notice, service provider bankruptcy, prolonged force majeure, unsatisfactory performance after a cure period, or corruption-related breach. Either party may terminate for material breach if the breach is not cured within the stated notice period.
+2026-06-06 13:28:07.715 | INFO     | main_website.views:judge_answer:389 - Judge response: <No Match>: The system answer contradicts the ground truth by stating the service provider cannot terminate for convenience, which is a key part of the ground truth's condition (allowing termination for material breach if not cured). The system answer provides an incorrect legal fact.
+2026-06-06 13:28:07.715 | INFO     | main_website.views:judge_answer:355 - Judging system answer. System answer: I could not find the answer in the provided contract text., Expected answer: The exact convenience termination notice period is not filled in. The MSA states that IPPB may terminate for convenience by giving prior written notice of blank days to the Service Provider.
+2026-06-06 13:28:10.484 | INFO     | main_website.views:judge_answer:389 - Judge response: <No Match>: The system answer is empty and contradicts the ground truth. The ground truth specifies the notice period is not filled, while the system answer's reason is that it couldn't find the answer, which directly contradicts the legal fact.
+2026-06-06 13:28:10.484 | INFO     | main_website.views:judge_answer:355 - Judging system answer. System answer: The maximum liability cap is 10% of the order value., Expected answer: Except for criminal negligence or willful misconduct, the Service Provider's aggregate liability to IPPB is limited to the total Contract Price. This cap does not apply to indemnity obligations, breach of intellectual property rights, or breach of confidentiality obligations.
+2026-06-06 13:28:14.496 | INFO     | main_website.views:judge_answer:389 - Judge response: <Match>: The system answer contains the same key legal fact of a cap limit, even if the wording is different. The cap's metric (10% of the order value) and its application to specific areas (indemnity, IP, confidentiality) are not mentioned in the ground truth answer.
+2026-06-06 13:28:14.496 | INFO     | main_website.views:judge_answer:355 - Judging system answer. System answer: The IPPB retains ownership of IP created under this agreement., Expected answer: All deliverables and intellectual property rights relating to the services provided under the agreement are proprietary to IPPB. IPPB's name, logo, design, and other intellectual property also remain solely IPPB's property.
+2026-06-06 13:28:18.411 | INFO     | main_website.views:judge_answer:389 - Judge response: <Match>: The system answer contains the same key legal facts, even if wording is different. The system explicitly states IPPB retains ownership of IP created under the agreement, which aligns with the ground truth's mention of IPPB owning IP related to the services provided under the agreement.
+2026-06-06 13:28:18.412 | INFO     | main_website.views:judge_answer:355 - Judging system answer. System answer: I could not find the answer in the provided contract text., Expected answer: The confidentiality clause survives expiration or earlier termination of the agreement. Confidential information must be destroyed, erased, or returned promptly upon written request of the discloser or upon termination/expiry.
+2026-06-06 13:28:21.109 | INFO     | main_website.views:judge_answer:389 - Judge response: <No Match>: The system answer is empty and contradicts the ground truth.
+2026-06-06 13:28:21.110 | INFO     | main_website.views:judge_answer:355 - Judging system answer. System answer: The answer is India., Expected answer: The agreement is governed by the laws of India and is subject to the exclusive jurisdiction of courts at Delhi, excluding all other courts.
+2026-06-06 13:28:23.465 | INFO     | main_website.views:judge_answer:389 - Judge response: <Match>: The system answer contains the same key legal facts as the ground truth answer: both mention the country "India" and the jurisdiction "Delhi," even though the system answer uses different wording.
+2026-06-06 13:28:23.465 | INFO     | main_website.views:judge_answer:355 - Judging system answer. System answer: The defined process for resolving disputes between the parties is to refer the dispute for arbitration, as outlined in Chunk 1. The process involves appointing one arbitrator from each party and a third arbitrator through mutual consent, with arbitration proceedings conducted under the Indian Arbitration and Conciliation Act, 1996., Expected answer: The parties must first try to resolve disputes amicably through direct informal negotiation between designated representatives, then escalate to senior authorized personnel. If unresolved within 21 days after negotiations begin, the Bank may refer the dispute to arbitration with one arbitrator appointed by each party and a third presiding arbitrator appointed by mutual consent of the first two. Arbitrators must be appointed within 30 days of notice, the seat is New Delhi or another mutually agreed place in India, proceedings follow the Indian Arbitration and Conciliation Act, 1996, and the award is enforceable in Indian courts only.
+2026-06-06 13:28:27.398 | INFO     | main_website.views:judge_answer:389 - Judge response: <Partial Match>: The system answer mentions the Indian Arbitration and Conciliation Act, which is a correct key legal fact, but it also misses the specific detail that the arbitrators must be appointed within 30 days of notice and that the seat is New Delhi (mutually agreed place in India). The process outlined in the system answer partially aligns with the ground truth's structure but lacks the critical qualifiers.
+2026-06-06 13:30:51.626 | INFO     | main_website.views:ask_question:326 - Asking question
+2026-06-06 13:30:51.956 | INFO     | main_website.views:generate_answer:253 - Generating answer for question: Under what conditions can either party terminate this agreement?
+2026-06-06 13:30:51.956 | INFO     | main_website.views:generate_answer:268 - Sending message to qwen3:0.6b: You are a contract QA assistant. Answer using only the provided contract context.
+Rules:
+1. Do not invent values, dates, rates, notice periods, or clauses.
+2. If the context says a value is blank, unspecified, or governed by a Schedule, say that explicitly.
+3. If the context contains a relevant clause but not the exact requested value, explain what the clause says.
+4. Say 'I could not find the answer in the provided contract text.' only when none of the provided chunks address the topic.
+5. Keep the answer concise but include the important qualifiers and exceptions.
+
+Context:
+Chunk 1:
+any other or further exercise or enforcement of such right, remedy or provision or the 
+exercise or enforcement of any other right, remedy or provision. No waiver of any of the 
+terms or conditions hereof shall be valid or binding unless made in writing and duly 
+executed by both the parties. 
+52. SURVIVAL 
+Cancellation, expiration or earlier termination of the Agreement (i) shall not relieve any 
+Party of any obligations here under which expressly or by implication survive termination 
+hereof; and (ii) except as otherwise provided in any provision of the Agreement expressly 
+limiting the liability of either Party, shall not relieve either Party of any obligations or liabilities 
+for (a) loss or damage to the other Party arising out of or caused by acts or omissions of
+
+Chunk 2:
+served pursuant to this Clause shall give reasonable details of the Material Breach, and the 
+termination will become effective. 
+ 
+32. EFFECTS OF TERMINATION 
+In the event that the IPPB terminates this Agreement pursuant to failure on the part of the 
+Service Provider to comply with the conditions as contained in this agreement and 
+depending on the event of default, Performance Guarantee furnished by Service Provider 
+shall be invoked/forfeited. 
+33. Termination due to bankruptcy of Service Provider, if Service Provider files for declaration 
+of  bankruptcy before the appropriate forum. 
+The IPPB may serve written notice on the Service Provider at any time to terminate this 
+Agreement with immediate effect in the event that the Service Provider reporting an 
+apprehension of bankruptcy to the IPPB or its nominated agencies. 
+34.  LIQUIDATED DAMAGES  
+If the Service Provider fails to comply with the terms of this agreement, IPPB shall, without 
+prejudice to its other remedies under the agreement, deduct from the order value, as 
+liquidated damages, a sum equivalent to 0.5% of the services for each week or part thereof
+
+Chunk 3:
+IPPB may also terminate this agreement , on convenience, at its own discretion by 
+providing prior written notice of ______ (__) days to the Service Provider without assigning 
+any reasons. 
+ 
+30. BLACKLISTING 
+ If the Service Provider fails to perform the obligations as per this agreement or his/her 
+performance is found to be unsatisfactory by the Bank (India Post Payments Bank Ltd.), the 
+Bank may at its sole discretion blacklist the Service Provider from participating in any offer 
+by the Bank calling Bids, for a period of __ years. 
+ 
+ 
+31. MATERIAL BREACH 
+In the event that either Party believes that the other Party is in Material Breach of its 
+obligations under this Agreement, such aggrieved Party may terminate this Agreement 
+upon giving a _____ (___) days’ notice for curing the Material Breach to the other Party. In 
+case the Material Breach continues, after the notice period, the IPPB or the Service 
+Provider, as the case may be will have the option to terminate the Agreement. Any notice 
+served pursuant to this Clause shall give reasonable details of the Material Breach, and the 
+termination will become effective. 
+ 
+32. EFFECTS OF TERMINATION
+
+Chunk 4:
+29. Termination of Contract  
+ 
+ Bank shall have the option to terminate this agreement any time or at any stage in the 
+scenarios listed below. 
+o Non delivery of services by the service provider 
+o Service levels committed not met with by the service provider  
+o Breach of obligations of the service provider or any act of the service provider 
+amounting to financial loss, damages, penalties levied on bank by regulator or 
+any statutory authority  
+ It is clarified that the service provider shall not terminate this Agreement for 
+convenience. 
+ IPPB reserves the right to recover any dues payable by the service provider from any 
+amount outstanding to the credit of the service provider, including the pending bills 
+and/or invoking & forfeiting the Bank Guarantee, if any, under this agreement.
+
+Chunk 5:
+the Service Provider with respect to all covenants herein.  
+ 
+27. NON-EXCLUSIVE AGREEMENT:  
+This Agreement is on non-exclusive basis and the Service Provider shall not have any 
+exclusive right to provide the Services to the IPPB. The IPPB shall be free to engage any 
+other Service Provider/s or may entrust services similar to the Services or any part thereof 
+to any person/s or company or firm etc. 
+ 
+ 
+28. Relationship of the Parties: 
+This Agreement, which is a Contract for Service, shall not constitute the appointment of 
+either Party as the legal representative or agent of the other Party. No Party to this 
+Agreement shall have any right or authority to assume, create or incur any liability or any 
+obligation of any kind, express or implied, against or in the name of or on behalf of the 
+other Party to this Agreement except as may be specifically provided in this Agreement, 
+neither party shall assume or be responsible for any liability or obligation that arises from 
+any act or omission to act of, the other party however or whenever arising. 
+ 
+29. Termination of Contract  
+ 
+ Bank shall have the option to terminate this agreement any time or at any stage in the
+
+Question: Under what conditions can either party terminate this agreement?
+
+Answer:
+2026-06-06 13:30:57.216 | INFO     | main_website.views:generate_answer:291 - model answer : I could not find the answer in the provided contract text.
